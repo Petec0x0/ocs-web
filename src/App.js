@@ -17,7 +17,7 @@ function App() {
       <Mentors />
       <Testimonial />
       <RegisterSection />
-      <CareerSection />
+      <CareerSection /> 
     </>
   );
 }
