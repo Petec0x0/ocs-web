@@ -10,7 +10,7 @@ const NavBar = () => {
         <ul className="flex space-x-5">
           <li>Home</li>
           <li>About</li>
-          <li>Success Storie</li>
+          <li>Success Stories</li>
         </ul>
       </nav>
       <div className="hidden md:block">
