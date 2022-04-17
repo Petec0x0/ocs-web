@@ -16,8 +16,8 @@ const WhoCanJoinSection = () => {
           Universities and Polytechnics. Preference will be given to Computer /
           Physical Science and Engineering.
         </p>
-        <p className="text-primary rounded-full bg-white px-3 py-3 font-bold hover:text-lg md:w-1/3 md:mx-auto">
-          Learn more about this training
+        <p className="text-primary rounded-full px-3 py-3 font-bold hover:text-lg md:w-1/3 md:mx-auto">
+          <a href="/about">Learn more about this training</a>
         </p>
       </section>
 

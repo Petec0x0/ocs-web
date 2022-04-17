@@ -45,9 +45,18 @@ const CareerSection = () => {
 						You'll have the opporturnity to make sure digital life
 						and data is protected.
 					</p>
-					<button className="mb-6 rounded-full bg-primary text-white px-7 py-3 font-bold text-xs w-1/2 hover:drop-shadow-lg md:w-1/3">
-						APPLY NOW
-					</button>
+					<div>
+						<a href="#register">
+							<button className="mb-6 rounded-full bg-primary text-white px-7 py-3 font-bold text-xs w-1/2 hover:drop-shadow-lg md:w-1/3">
+								APPLY NOW
+							</button>
+						</a>
+						<a href="/about">
+							<button className="mb-6 rounded-full text-primary px-7 py-3 font-bold text-xs w-1/2 hover:drop-shadow-lg md:w-1/3">
+								LEARN MORE
+							</button>
+						</a>
+					</div>
 				</div>
 			</section>
 		</div>

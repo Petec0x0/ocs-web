@@ -1,6 +1,6 @@
 const RegisterSection = () => {
 	return (
-		<div className="bg-primary md:px-24">
+		<div id="register" className="bg-primary md:px-24">
 			<section className="flex flex-col p-8 md:p-20 md:flex-row">
 				<div className="mx-auto md:w-1/3">
 					<h1 className="text-3xl py-6 font-bold">
@@ -15,7 +15,7 @@ const RegisterSection = () => {
 					</p>
 				</div>
 				<div className="md:w-2/3">
-					<form>
+					<form method="POST">
 						<div className="mb-6">
 							<input
 								type="text"
