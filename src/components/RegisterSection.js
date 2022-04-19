@@ -8,8 +8,8 @@ const RegisterSection = () => {
 						<span className="text-white">get started</span>
 					</h1>
 					<p className="text-gray-800 pb-6 md:pr-4">
-						Complete this quick process of entering in your details
-						and wait for our callback. We will give you personalized
+						Complete this quick process of entering your details and
+						wait for our callback. We will give you personalized
 						advice, answer all your queries and bring you a step
 						closer to becoming a Cybersecurity expert.
 					</p>

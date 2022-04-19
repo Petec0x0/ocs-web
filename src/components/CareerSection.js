@@ -34,7 +34,7 @@ const CareerSection = () => {
 						Great Pay
 					</h3>
 					<p className="mb-4 text-gray-600">
-						It is one of the most in-demand field in the world. And
+						It is one of the most in-demand fields in the world. And
 						a high demand means a high pay.
 					</p>
 
@@ -42,8 +42,8 @@ const CareerSection = () => {
 						Secure digital lives
 					</h3>
 					<p className="mb-4 text-gray-600">
-						You'll have the opporturnity to make sure digital life
-						and data is protected.
+						You'll have the opportunity to make sure digital life
+						and data are protected.
 					</p>
 					<div>
 						<a href="#register">

@@ -13,7 +13,7 @@ const Mentors = () => {
 					Meet Your <span className="text-primary">Mentors</span>
 				</h1>
 				<p className="mt-6 text-gray-600">
-					The Mentor at Oriental Cybersecurity have many years of
+					The Mentor at Oriental Cybersecurity has many years of
 					industry experience in Cybersecurity and teaching. They make
 					sure to train you in an engaging and fun way so that
 					learning Cybersecurity will seem just like a cakewalk.

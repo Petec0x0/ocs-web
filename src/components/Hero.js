@@ -12,9 +12,9 @@ const HeroSection = () => {
 					Learn how you can better protect digital life
 				</h3>
 				<p className="mb-10 text-gray-600">
-					Find out all you need to know about Cybersecurity. Get a
-					live one on one training by our industry experts and get
-					your dream job!
+					Find out all you need to know about Cybersecurity. Get live
+					one on one training by our industry experts and get your
+					dream job!
 				</p>
 				<a className="mb-6" href="#register">
 					<button className="rounded-full bg-primary text-white px-7 py-3 font-bold text-xs w-1/2 hover:drop-shadow-lg md:w-1/4">

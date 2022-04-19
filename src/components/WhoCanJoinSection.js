@@ -11,8 +11,8 @@ const WhoCanJoinSection = () => {
         </h1>
         <p className="my-6 text-gray-600 md:mx-14">
           Anyone can join this course irrespective of what they are doing
-          currently. Our target candidates includes serving NYSC members, recent
-          graduates, as well as third and final year student of Nigeria
+          currently. Our target candidates include serving NYSC members, recent
+          graduates, as well as third and final year students of Nigeria
           Universities and Polytechnics. Preference will be given to Computer /
           Physical Science and Engineering.
         </p>
