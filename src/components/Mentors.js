@@ -7,7 +7,7 @@ const Mentors = () => {
 	const [isFullTextGM, setIsFullTextGM] = useState(false);
 
 	return (
-		<div className="bg-[#f7f7f7] pb-6 md:px-24">
+		<div className="bg-[#f7f7f7] pb-6 md:px-24 xl:px-40">
 			<section className="p-6">
 				<h1 className="text-2xl font-extrabold font-mono uppercase md:text-3xl">
 					Meet Your <span className="text-primary">Mentors</span>
@@ -20,7 +20,7 @@ const Mentors = () => {
 				</p>
 			</section>
 			<section>
-				<div className="flex flex-col m-6 px-6 py-10 bg-white drop-shadow-xl md:flex-row">
+				<div className="flex flex-col m-6 px-6 py-10 bg-white drop-shadow-xl rounded-lg md:flex-row">
 					<div className="flex md:w-1/2">
 						<img
 							className="self-center mx-auto rounded-full border-x-8 w-1/2 border-primary"
@@ -89,7 +89,7 @@ const Mentors = () => {
 					</div>
 				</div>
 
-				<div className="flex flex-col m-6 px-6 py-10 bg-white drop-shadow-xl md:flex-row-reverse">
+				<div className="flex flex-col m-6 px-6 py-10 bg-white drop-shadow-xl rounded-lg md:flex-row-reverse">
 					<div className="flex md:w-1/2">
 						<img
 							className="self-center mx-auto rounded-full border-x-8 w-1/2 border-primary"

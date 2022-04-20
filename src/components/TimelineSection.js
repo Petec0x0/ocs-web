@@ -21,7 +21,7 @@ const TimelineSection = () => {
 									<div className="flex flex-col items-center">
 										<div className="flex items-center justify-start w-full mx-auto">
 											<div className="w-full lg:w-1/2 lg:pr-8">
-												<div className="p-4 bg-white rounded shadow-lg shadow-cyan-300">
+												<div className="p-4 bg-white rounded shadow-lg shadow-cyan-300 rounded-lg">
 													<ul className="list-disc p-4">
 														<li>
 															The need for
@@ -57,7 +57,7 @@ const TimelineSection = () => {
 									<div className="flex flex-col items-center">
 										<div className="flex items-center justify-end w-full mx-auto">
 											<div className="w-full lg:w-1/2 lg:pl-8">
-												<div className="p-4 bg-white rounded shadow-lg shadow-red-300">
+												<div className="p-4 bg-white rounded shadow-lg shadow-red-300 rounded-lg">
 													<ul className="list-disc p-4">
 														<li>
 															Basic concepts of
@@ -88,7 +88,7 @@ const TimelineSection = () => {
 									<div className="flex flex-col items-center">
 										<div className="flex items-center justify-start w-full mx-auto">
 											<div className="w-full lg:w-1/2 lg:pr-8">
-												<div className="p-4 bg-white rounded shadow-lg shadow-yellow-300">
+												<div className="p-4 bg-white rounded shadow-lg shadow-yellow-300 rounded-lg">
 													<ul className="list-disc p-4">
 														<li>
 															Cybersecurity
