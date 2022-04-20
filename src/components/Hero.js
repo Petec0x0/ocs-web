@@ -6,7 +6,7 @@ const HeroSection = () => {
 			<div className="flex flex-col md:mt-10">
 				<h1 className="text-2xl font-extrabold font-mono uppercase my-8 md:text-4xl">
 					Become a Job Ready{" "}
-					<span className="text-primary">Cybersecurity</span> Expert
+					<span className="text-primary">Cybersecurity</span> Professional
 				</h1>
 				<h3 className="font-bold font-mono uppercase mb-6">
 					Learn how you can better protect digital life

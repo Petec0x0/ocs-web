@@ -1,3 +1,5 @@
+import goodluck_adiole from "images/goodluck-adiole.jpg";
+
 const Testimonial = () => {
 	return (
 		<div id="testimonials" className="md:px-24">
@@ -32,7 +34,7 @@ const Testimonial = () => {
 									<img
 										className="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
 										alt="student-pic"
-										src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+										src={goodluck_adiole}
 									/>
 								</div>
 								<div className="text-center md:text-left">
@@ -40,12 +42,14 @@ const Testimonial = () => {
 										{/* Design Tools */}
 									</h2>
 									<p className="mt-2 text-gray-600">
-										odio quaerat nam ex commodi hic,
-										suscipit in a veritatis pariatur minus
-										consequuntur!
-										Lorem ipsum dolor sit amet consectetur
-										adipisicing elit. Quae dolores deserunt
-										ea doloremque natus error, rerum quas
+										I secured a job as a Cybersecurity
+										Graduate Engineer at Zenith Bank
+										courtesy of the knowledge and
+										certificate I got from this training.
+										Before that, I have had a huge interest
+										in tech but wasn't sure which area to
+										focus on until a friend introduced me to
+										this training programme.
 									</p>
 								</div>
 								<div className="flex justify-end mt-4">
@@ -53,7 +57,7 @@ const Testimonial = () => {
 										href="/"
 										className="text-xl font-medium text-indigo-500"
 									>
-										John Doe
+										Goodluck Adiole
 									</a>
 								</div>
 							</div>
