@@ -16,7 +16,7 @@ const HeroSection = () => {
 					one on one training by our industry experts and get your
 					dream job!
 				</p>
-				<a className="mb-6" href="#register">
+				<a className="mb-6" href="/#register">
 					<button className="rounded-full bg-primary text-white px-7 py-3 font-bold text-xs w-1/2 hover:drop-shadow-lg md:w-1/4">
 						APPLY NOW
 					</button>

@@ -107,3 +107,8 @@ code {
 .open .hamburger-bottom {
   transform: rotate(-45deg) translateY(6px) translate(-6px);
 }
+
+/* ABOUT PAGE */
+#about-hero {
+  background-image: url('images/bg-1.png');
+}

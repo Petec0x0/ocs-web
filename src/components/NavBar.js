@@ -25,7 +25,7 @@ const NavBar = () => {
           </ul>
         </nav>
         <div className="hidden md:block">
-          <a href="#register">
+          <a href="/#register">
             <button className="rounded-full bg-primary text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
               APPLY NOW
             </button>
