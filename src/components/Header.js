@@ -10,7 +10,7 @@ const Header = () => {
       <HeroSection />
       {/* Hero Section Ends*/}
     </div>
-    );
+  );
 }
 
 export default Header;

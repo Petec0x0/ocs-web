@@ -36,9 +36,8 @@ const NavBar = () => {
         {/* <!-- Hamburger Icon --> */}
         <button
           id="menu-btn"
-          className={`${
-            isClicked ? "open" : ""
-          } block hamburger md:hidden focus:outline-none mt-2`}
+          className={`${isClicked ? "open" : ""
+            } block hamburger md:hidden focus:outline-none mt-2`}
           onClick={() => setIsClicked(!isClicked)}
         >
           <span className="hamburger-top"></span>
@@ -50,9 +49,8 @@ const NavBar = () => {
       <div className="md:hidden">
         <div
           id="menu"
-          className={`absolute ${
-            isClicked ? "flex" : "hidden"
-          } flex-col items-center self-end py-8 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md`}
+          className={`absolute ${isClicked ? "flex" : "hidden"
+            } flex-col items-center self-end py-8 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md`}
         >
           <a href="/#">Home</a>
           <a href="/about">About</a>

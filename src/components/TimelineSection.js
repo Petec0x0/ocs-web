@@ -2,7 +2,7 @@ const TimelineSection = () => {
 	return (
 		<div className="md:px-24">
 			<section className="text-center p-8">
-				<h1 className="text-2xl font-extrabold font-mono uppercase md:text-3xl">
+				<h1 className="text-xl font-extrabold font-mono uppercase md:text-2xl">
 					What you will learn{" "}
 					<span className="text-primary">with us</span> in this
 					Cybersecurity Training
@@ -21,7 +21,7 @@ const TimelineSection = () => {
 									<div className="flex flex-col items-center">
 										<div className="flex items-center justify-start w-full mx-auto">
 											<div className="w-full lg:w-1/2 lg:pr-8">
-												<div className="p-4 bg-white rounded shadow-lg shadow-cyan-300 rounded-lg">
+												<div className="p-4 bg-white shadow-lg shadow-cyan-300 rounded-lg">
 													<ul className="list-disc p-4">
 														<li>
 															The need for
@@ -34,11 +34,11 @@ const TimelineSection = () => {
 														</li>
 														<li>
 															The art of ensuring
-															integrity 
+															integrity
 														</li>
 														<li>
 															The art of ensuring
-															availability 
+															availability
 														</li>
 													</ul>
 												</div>
@@ -57,19 +57,19 @@ const TimelineSection = () => {
 									<div className="flex flex-col items-center">
 										<div className="flex items-center justify-end w-full mx-auto">
 											<div className="w-full lg:w-1/2 lg:pl-8">
-												<div className="p-4 bg-white rounded shadow-lg shadow-red-300 rounded-lg">
+												<div className="p-4 bg-white shadow-lg shadow-red-300 rounded-lg">
 													<ul className="list-disc p-4">
 														<li>
 															Basic concepts of
-															web security 
+															web security
 														</li>
 														<li>
 															Basic concepts of
-															cloud security 
+															cloud security
 														</li>
 														<li>
 															Vulnerability and
-															risk assessment 
+															risk assessment
 														</li>
 													</ul>
 												</div>
@@ -88,7 +88,7 @@ const TimelineSection = () => {
 									<div className="flex flex-col items-center">
 										<div className="flex items-center justify-start w-full mx-auto">
 											<div className="w-full lg:w-1/2 lg:pr-8">
-												<div className="p-4 bg-white rounded shadow-lg shadow-yellow-300 rounded-lg">
+												<div className="p-4 bg-white shadow-lg shadow-yellow-300 rounded-lg">
 													<ul className="list-disc p-4">
 														<li>
 															Cybersecurity

@@ -3,10 +3,9 @@ import hero_illustration from "images/hero-illustration.svg";
 const HeroSection = () => {
 	return (
 		<section className="flex flex-col-reverse md:flex-row">
-			<div className="flex flex-col md:mt-10">
-				<h1 className="text-2xl font-extrabold font-mono uppercase my-8 md:text-4xl">
-					Become a Job Ready{" "}
-					<span className="text-primary">Cybersecurity</span> Professional
+			<div className="flex flex-col md:mt-10 md:w-1/2">
+				<h1 className="text-2xl font-extrabold font-mono my-8 md:text-2xl">
+					Start your journey to becoming a <span className="text-primary">Cyber Security</span> expert  right here -- a profession that guarantees easy job and mega pay.
 				</h1>
 				<h3 className="font-bold font-mono uppercase mb-6">
 					Learn how you can better protect digital life
@@ -22,7 +21,7 @@ const HeroSection = () => {
 					</button>
 				</a>
 			</div>
-			<div className="md:w-8/12">
+			<div className="md:w-1/2">
 				<img
 					className="w-full"
 					src={hero_illustration}

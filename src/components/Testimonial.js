@@ -4,7 +4,7 @@ const Testimonial = () => {
 	return (
 		<div id="testimonials" className="md:px-24">
 			<section className="text-center p-6">
-				<h1 className="text-2xl font-extrabold font-mono uppercase md:text-3xl">
+				<h1 className="text-xl font-extrabold font-mono uppercase md:text-2xl">
 					What Do <span className="text-primary">Our Students</span>{" "}
 					Have to Say About Us?
 				</h1>
