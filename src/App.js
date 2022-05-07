@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "components/Header";
 import WhoCanJoinSection from "components/WhoCanJoinSection";
-import TimelineSection from "components/TimelineSection";
-import Mentors from "components/Mentors";
+// import TimelineSection from "components/TimelineSection";
+// import Mentors from "components/Mentors";
 import Testimonial from "components/Testimonial";
 import RegisterSection from "components/RegisterSection";
 import CareerSection from "components/CareerSection";
@@ -21,7 +21,7 @@ function App() {
           <p className=" text-gray-800 font-bold text-lg md:mx-14">
             Why you need to embrace the field
           </p>
-          <p className="my-6 text-gray-600 md:mx-14">
+          <p className="my-6 text-gray-600 text-justify md:mx-14">
             Information Security/Cybersecurity is one of the fastest growing
             and high paying professions in the world today,
             with a job growth rate projected at 32% between now and 2028 according to the U.S.
@@ -31,7 +31,7 @@ function App() {
             with a projected 3.5 million unfilled positions worldwide with the US,
             Europe, Australia, and India leading in the skills shortage.
           </p>
-          <p className="my-6 text-gray-600 md:mx-14">
+          <p className="my-6 text-gray-600 text-justify md:mx-14">
             The increasing trend by organizations in migration to cloud-based infrastructure 
             as orchestrated by the COVID-19 pandemic, and the dependence of companies, organizations, 
             ndividuals and countries on automated and computerized systems have equally attracted the 
@@ -39,7 +39,7 @@ function App() {
             financial benefits, and other ulterior motives, 
             thence driving the need for trained Cybersecurity professionals who can counter such attacks.
           </p>
-          <p className="my-6 text-gray-600 md:mx-14">
+          <p className="my-6 text-gray-600 text-justify md:mx-14">
             As a result of this development, various professional roles have emerged, some of which include: 
             Security Analyst, Security Assessor, Security Engineer,  Information Security Consultant,  
             Penetration Tester,  Incident Manager,  Information Security Specialist,  
@@ -49,8 +49,8 @@ function App() {
         </section>
       </div>
       <WhoCanJoinSection />
-      <TimelineSection />
-      <Mentors />
+      {/* <TimelineSection /> */}
+      {/* <Mentors /> */}
       <Testimonial />
       <RegisterSection />
       <CareerSection />

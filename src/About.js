@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "components/NavBar";
+import Mentors from "components/Mentors";
 import hero_illustration from "images/hero-illustration-3.svg";
 
 const About = () => {
@@ -16,7 +17,7 @@ const About = () => {
 					<h1 className="text-2xl font-extrabold font-mono my-8 md:text-4xl">
 						About <span className="text-primary">Us</span>
 					</h1>
-					<p className="mb-10 text-gray-600">
+					<p className="mb-10 text-gray-800">
 						Oriental CyberSecurity Training and Initiative Programme
 						is a program established and organized by a team of
 						Nigerian Cyber Security experts based in Nigeria, Canada
@@ -25,7 +26,7 @@ const About = () => {
 						all interested Nigerians who are ready to make a career
 						in Cyber Security.
 					</p>
-					<p className="mb-10 text-gray-600">
+					<p className="mb-10 text-gray-800">
 						The core benefit is for the participants to acquire
 						skills and to build professional networks that would
 						enable them to grow and build a career in the field.
@@ -45,7 +46,7 @@ const About = () => {
 						Why Should <span className="text-primary">You</span>{" "}
 						Care?
 					</h1>
-					<p className="my-6 text-gray-800">
+					<p className="my-6 text-gray-800 text-justify">
 						Information Security/Cybersecurity is one of the fastest
 						growing and high paying professions in the world today,
 						with a job growth rate projected at 32% between now and
@@ -58,7 +59,7 @@ const About = () => {
 						Europe, Australia, and India leading in the skills
 						shortage.
 					</p>
-					<p className="my-6 text-gray-800">
+					<p className="my-6 text-gray-800 text-justify">
 						The increasing trend by organizations in migration to
 						cloud-based infrastructure as orchestrated by the
 						COVID-19 pandemic, and the dependence of companies,
@@ -70,7 +71,7 @@ const About = () => {
 						driving the need for trained Cybersecurity professionals
 						who can counter such attacks.
 					</p>
-					<p className="my-6 text-gray-800">
+					<p className="my-6 text-gray-800 text-justify">
 						As a result of this development, various professional
 						roles have emerged, some of which include: Security
 						Analyst, Security Assessor, Security Engineer,
@@ -82,6 +83,7 @@ const About = () => {
 					</p>
 				</section>
 			</div>
+			<Mentors />
 			<div className="bg-primary md:px-24">
 				<section className="text-center p-6">
 					<h1 className="text-3xl py-6 font-bold md:text-4xl">
