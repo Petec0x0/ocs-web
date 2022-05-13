@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from "components/NavBar";
 import avatar_profile from "images/avatar_profile.png";
+import { GaTestimony, Anon1, Anon2 } from './data/testimonies';
 import publication_screenshot from 'images/publication-screenshot.png';
 
-
-
 const Testimonials2021 = () => {
+    const [isFullText1, setIsFullText1] = useState(false);
+
     return (
         <>
             <div className="px-8 md:px-24">
@@ -13,37 +14,77 @@ const Testimonials2021 = () => {
             </div>
 
             {/* <!-- component --> */}
-            <div class="py-2 white">
-                <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
-                    <h2 class="mb-12 text-center text-2xl text-gray-900 font-bold md:text-2xl">Our students testimonial and <span className="text-primary">success stories</span> from 2021 edition</h2>
-                    <div class="grid gap-8 md:grid-rows-2 lg:grid-cols-2">
-                        <div class="row-span-2 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-8">
-                            <div class="h-full flex flex-col justify-center space-y-4">
-                                <img class="w-20 h-20 mx-auto rounded-full" src={avatar_profile} alt="user avatar" height="220" width="220" loading="lazy" />
-                                    <p class="text-gray-600 md:text-xl"> <span class="font-serif">"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellat perspiciatis excepturi est. Non ipsum iusto aliquam consequatur repellat provident, omnis ut, sapiente voluptates veritatis cum deleniti repudiandae ad doloribus. <span class="font-serif">"</span></p>
-                                    <div>
-                                        <h6 class="text-lg font-semibold leading-none">GA</h6>
-                                    </div>
+            <div className="py-2 white">
+                <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+                    <h2 className="mb-12 text-center text-2xl text-gray-900 font-bold md:text-2xl">Our students testimonial and <span className="text-primary">success stories</span> from 2021 edition</h2>
+                    <div className="grid gap-8 md:grid-rows-2 lg:grid-cols-2">
+                        <div className="row-span-2 p-6 border border-gray-100 rounded-xl bg-gray-50 text-center sm:p-8">
+                            <div className="h-full flex flex-col justify-center space-y-4">
+                                <img className="w-20 h-20 mx-auto rounded-full" src={avatar_profile} alt="user avatar" height="220" width="220" loading="lazy" />
+                                <p className="text-gray-600"> <span className="font-serif">"</span>
+                                    {
+                                        isFullText1 ? (
+                                            <>
+                                                <GaTestimony />
+                                                <br />
+                                                <button
+                                                    onClick={() =>
+                                                        setIsFullText1(!isFullText1)
+                                                    }
+                                                    className="text-primary hover:text-sm"
+                                                >
+                                                    View Less
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                TESTIMONY ON MY CYBERSECURITY JOURNEY.
+                                                <br />
+
+                                                I will start by saying: May God Almighty bless the sponsors and promoters of the Oriental  Cybersecurity Training programme for transforming...
+                                                <button
+                                                    onClick={() =>
+                                                        setIsFullText1(!isFullText1)
+                                                    }
+                                                    className="text-primary hover:text-sm"
+                                                >
+                                                    View More
+                                                </button>
+                                            </>
+                                        )
+                                    }
+
+                                    <span className="font-serif">"</span>
+                                </p>
+                                <div>
+                                    <h6 className="text-lg font-semibold leading-none">GA</h6>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 sm:flex sm:space-x-8 sm:p-8">
-                            <img class="w-20 h-20 mx-auto rounded-full" src={avatar_profile} alt="user avatar" height="220" width="220" loading="lazy" />
-                                <div class="space-y-4 mt-4 text-center sm:mt-0 sm:text-left">
-                                    <p class="text-gray-600"> <span class="font-serif">"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellat perspiciatis excepturi est. Non ipsum iusto aliquam consequatur repellat provident, omnis ut, sapiente voluptates veritatis cum deleniti repudiandae ad doloribus. <span class="font-serif">"</span></p>
-                                    <div>
-                                        <h6 class="text-lg font-semibold leading-none">JD</h6>
-                                    </div>
+                        <div className="p-6 border border-gray-100 rounded-xl bg-gray-50 sm:flex sm:space-x-8 sm:p-8">
+                            <img className="w-20 h-20 mx-auto rounded-full" src={avatar_profile} alt="user avatar" height="220" width="220" loading="lazy" />
+                            <div className="space-y-4 mt-4 text-center sm:mt-0 sm:text-left">
+                                <p className="text-gray-600"> <span className="font-serif">"</span>
+                                    <Anon1 />
+                                    <span className="font-serif">"</span>
+                                </p>
+                                <div>
+                                    <h6 className="text-lg font-semibold leading-none">JD</h6>
                                 </div>
+                            </div>
                         </div>
-                        <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 sm:flex sm:space-x-8 sm:p-8">
-                            <img class="w-20 h-20 mx-auto rounded-full" src={avatar_profile} alt="user avatar" height="220" width="220" loading="lazy" />
-                                <div class="space-y-4 mt-4 text-center sm:mt-0 sm:text-left">
-                                    <p class="text-gray-600"> <span class="font-serif">"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellat perspiciatis excepturi est. Non ipsum iusto aliquam consequatur repellat provident, omnis ut, sapiente voluptates veritatis cum deleniti repudiandae ad doloribus. <span class="font-serif">"</span></p>
-                                    <div>
-                                        <h6 class="text-lg font-semibold leading-none">ME</h6>
-                                    </div>
+                        <div className="p-6 border border-gray-100 rounded-xl bg-gray-50 sm:flex sm:space-x-8 sm:p-8">
+                            <img className="w-20 h-20 mx-auto rounded-full" src={avatar_profile} alt="user avatar" height="220" width="220" loading="lazy" />
+                            <div className="space-y-4 mt-4 text-center sm:mt-0 sm:text-left">
+                                <p className="text-gray-600"> <span className="font-serif">"</span>
+                                    <Anon2 />
+                                    <span className="font-serif">"</span>
+                                </p>
+                                <div>
+                                    <h6 className="text-lg font-semibold leading-none">ME</h6>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
