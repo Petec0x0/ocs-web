@@ -245,9 +245,9 @@ const RegisterSection = () => {
                         focus:border-primary
                         md:w-1/2
                         ">
-                        <option disabled value="">Programme location</option>
+                        <option disabled value="">Location choice</option>
                         <option value="Physical location">Physical location</option>
-                        <option value="Remote location">Remote</option>
+                        <option value="Remote">Remote</option>
                      </select>
                   </div>
                   {
@@ -266,6 +266,7 @@ const RegisterSection = () => {
                </form>
             </div>
          </section>
+         <p className="text-white text-center p-2"><a href="/candidates">View registered candidates</a></p>
       </div>
    );
 };
