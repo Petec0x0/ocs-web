@@ -20,7 +20,7 @@ const WhoCanJoinSection = () => {
           general education up to school certificate level and passion for computers and
           digital sciences and access to a computer or smart  mobile device to access the Internet.
         </p>
-        <p className="text-primary rounded-full px-3 py-3 font-bold text-xl md:w-1/3 md:mx-auto">
+        <p className="text-primary rounded-full px-3 py-3 font-bold text-xl md:w-8/12 md:mx-auto">
           <a href="/about">About This Training  -- Oriental Cybersecurity Training and Mentorship Programme</a>
         </p>
         <p className="my-6 text-gray-600 text-justify md:mx-14">
