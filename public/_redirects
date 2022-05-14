@@ -1,2 +1,2 @@
 /* /index.html 200
-/api/* https://ocs-web-api.herokuapp.com/api/:splat 200
+/api/* https://ocs-web-api.herokuapp.com/:splat 200
