@@ -2,4 +2,4 @@
 /about /index.html 200
 /testimonials /index.html 200
 /candidates /index.html 200
-/api/* https://ocs-web-api.herokuapp.com/:splat 200
+/api/* https://ocs-web-api.herokuapp.com/api/:splat 200
