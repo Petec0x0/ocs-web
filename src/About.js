@@ -1,7 +1,11 @@
 import React from "react";
 import NavBar from "components/NavBar";
 import Mentors from "components/Mentors";
-import hero_illustration from "images/hero-illustration-3.svg";
+import AboutHeroSection from "components/AboutHeroSection";
+import WhyYouShouldCareSection from "components/WhyYouShouldCareSection";
+import AboutFooter from "components/AboutFooter";
+import success_illustration from "images/success-flatline.svg";
+
 
 const About = () => {
 	return (
@@ -9,96 +13,70 @@ const About = () => {
 			<div className="px-8 md:px-24">
 				<NavBar />
 			</div>
-			<div
-				id="about-hero"
-				className="flex flex-col px-8 rounded-full md:px-24 md:flex-row xl:px-40"
-			>
-				<div className="flex flex-col md:mt-10 md:w-1/2">
-					<h1 className="text-2xl font-extrabold font-mono my-8 md:text-4xl">
-						About <span className="text-primary">Us</span>
+			<AboutHeroSection />
+			<WhyYouShouldCareSection />
+			<div className="bg-[#f7f7f7] md:px-24">
+				<section className="flex flex-col py-8 px-7 md:flex-row">
+					<h1 className="text-center text-2xl font-extrabold font-mono my-8 md:hidden">
+						Programme <span className="text-primary">Deliverables</span>
 					</h1>
-					<p className="mb-10 text-gray-800">
-						Oriental CyberSecurity Training and Initiative Programme
-						is a program established and organized by a team of
-						Nigerian Cyber Security experts based in Nigeria, Canada
-						and Europe to deliver a first-hand training and
-						mentorship programme on Information/Cyber security to
-						all interested Nigerians who are ready to make a career
-						in Cyber Security.
-					</p>
-					<p className="mb-10 text-gray-800">
-						The core benefit is for the participants to acquire
-						skills and to build professional networks that would
-						enable them to grow and build a career in the field.
-					</p>
-				</div>
-				<div className="md:w-1/2">
-					<img
-						className="w-full xl:mx-auto xl:w-9/12"
-						src={hero_illustration}
-						alt="Hero Illustration"
-					/>
-				</div>
+					<div className="md:flex md:w-1/2">
+						<img
+							className="w-full self-center"
+							src={success_illustration}
+							alt="Career Illustration"
+						/>
+					</div>
+					<div className="flex flex-col md:mt-10 md:w-1/2">
+						<h1 className="hidden text-2xl font-extrabold font-mono my-8 md:block">
+							Programme <span className="text-primary">Deliverables</span>
+						</h1>
+						<p className="mb-4 mt-4 text-left text-gray-750 md:mt-2 md:text-left">
+							On successful completion of the programme, the candidate will earn the following awards / certificates:
+						</p>
+						<ul className="list-disc list-inside">
+							<li className="mb-4 text-gray-600">
+								Certificate of Completion signed by promoters of the programme.
+							</li>
+							<li className="mb-4 text-gray-600">
+								Two badges of honour earned from a reputable Information Technology Company with Cybersecurity focus.
+							</li>
+						</ul>
+					</div>
+				</section>
 			</div>
 			<div className="md:px-24">
-				<section className="p-6 text-center">
-					<h1 className="text-2xl font-extrabold font-mono md:text-3xl">
-						Why Should <span className="text-primary">You</span>{" "}
-						Care?
+				<section className="p-6">
+					<h1 className="text-xl font-extrabold font-mono md:text-xl">
+						Course <span className="text-primary">Delivery</span>{" "}
+						Method
 					</h1>
-					<p className="my-6 text-gray-800 text-justify">
-						Information Security/Cybersecurity is one of the fastest
-						growing and high paying professions in the world today,
-						with a job growth rate projected at 32% between now and
-						2028 according to the U.S. Bureau of Labour Statistics.
-						Annual median salary is $103,590 as at May 2020 for
-						entry level jobs of first degree with less than 5 years’
-						experience. Digital Guardian further reports a 0%
-						unemployment rate in the field with a projected 3.5
-						million unfilled positions worldwide with the US,
-						Europe, Australia, and India leading in the skills
-						shortage.
+					<p className="my-6 text-gray-600 text-justify">
+						The course will be delivered using our tested and reliable hybrid flexible(hyflex) method whereby candidates can choose to participate via in person (face to face) training or remotely via Zoom meeting link on meeting days.
 					</p>
-					<p className="my-6 text-gray-800 text-justify">
-						The increasing trend by organizations in migration to
-						cloud-based infrastructure as orchestrated by the
-						COVID-19 pandemic, and the dependence of companies,
-						organizations, individuals and countries on automated
-						and computerized systems have equally attracted the
-						attention of cybercriminals who are bent on infiltrating
-						and attacking such systems for political reasons,
-						financial benefits, and other ulterior motives, thence
-						driving the need for trained Cybersecurity professionals
-						who can counter such attacks.
+				</section>
+
+				<section className="p-6">
+					<h1 className="text-xl font-extrabold font-mono md:text-xl">
+						Commencement and  <span className="text-primary">Duration</span>{" "}
+						of The Programme
+					</h1>
+					<p className="my-6 text-gray-600 text-justify">
+						The programme will hold for a period of 12 weeks starting from 11 June 2022, with lectures holding every Saturday from 12noon to 2pm.
 					</p>
-					<p className="my-6 text-gray-800 text-justify">
-						As a result of this development, various professional
-						roles have emerged, some of which include: Security
-						Analyst, Security Assessor, Security Engineer,
-						Information Security Consultant,  Penetration Tester,
-						Incident Manager,  Information Security Specialist,
-						Application Security Analyst,  Web Security Analyst,
-						Cloud Security Analyst,  Network Security Engineer,
-						Vulnerability Bounty Hunter,  etc.
+				</section>
+
+				<section className="p-6">
+					<h1 className="text-xl font-extrabold font-mono md:text-xl">
+						Cost
+					</h1>
+					<p className="my-6 text-gray-600 text-justify">
+						Our fee for this highly regarded and well packaged programme  is ₦14,500 per participant. Eventhough the maiden edition of the programme was delivered free of charge to all participants, the need to offset some of the high operating costs of hosting the course informs this token charge.  Otherwise, the training still represents an attempt by the sponsors and organizers to give back to the society.
 					</p>
 				</section>
 			</div>
 			<Mentors />
-			<div className="bg-primary md:px-24">
-				<section className="text-center p-6">
-					<h1 className="text-3xl py-6 font-bold md:text-4xl">
-						It's <span className="text-white">never too late</span> to start
-					</h1>
-					<p className="mb-8 text-lg md:mx-14">
-						A very welcoming line about Oriental Cybersecurity
-					</p>
-					<a href="/#register">
-						<button className="rounded-full bg-black text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
-							APPLY NOW
-						</button>
-					</a>
-				</section>
-			</div>
+			<AboutFooter />
 		</>
 	);
 };
