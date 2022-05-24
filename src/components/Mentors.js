@@ -82,10 +82,11 @@ const Mentors = () => {
 								</button>
 							</p>
 						)}
-
-						<button className="rounded-full uppercase bg-primary text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
-							View Linkedin
-						</button>
+						<a rel="noopener noreferrer" href="https://www.linkedin.com/in/emeka-p-nwigwe-msc-cissp-cisa-crisc-cdpse-cobit5-ssyb-sfc-69b67219b/?originalSubdomain=ca" target="_blank">
+							<button className="rounded-full uppercase bg-primary text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
+								View Linkedin
+							</button>
+						</a>
 					</div>
 				</div>
 
@@ -166,10 +167,11 @@ const Mentors = () => {
 								</button>
 							</p>
 						)}
-
-						<button className="rounded-full uppercase bg-primary text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
-							View Linkedin
-						</button>
+						<a href="https://www.linkedin.com/in/gibson-mba-b235169b/" rel="noopener noreferrer" target="_blank">
+							<button className="rounded-full uppercase bg-primary text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
+								View Linkedin
+							</button>
+						</a>
 					</div>
 				</div>
 			</section>

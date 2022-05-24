@@ -10,7 +10,7 @@ import CareerSection from "components/CareerSection";
 
 function App() {
   useEffect(() => {
-    fetch('/');
+    fetch('/api/candidate');
   },[])
 
   return (
