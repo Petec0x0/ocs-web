@@ -43,13 +43,13 @@ function App() {
             financial benefits, and other ulterior motives, 
             thence driving the need for trained Cybersecurity professionals who can counter such attacks.
           </p>
-          <p className="my-6 text-gray-600 text-justify md:mx-14">
+          {/* <p className="my-6 text-gray-600 text-justify md:mx-14">
             As a result of this development, various professional roles have emerged, some of which include: 
             Security Analyst, Security Assessor, Security Engineer,  Information Security Consultant,  
             Penetration Tester,  Incident Manager,  Information Security Specialist,  
             Application Security Analyst,  Web Security Analyst,  Cloud Security Analyst,  
             Network Security Engineer, Vulnerability Bounty Hunter,  etc.
-          </p>
+          </p> */}
         </section>
       </div>
       <WhoCanJoinSection />

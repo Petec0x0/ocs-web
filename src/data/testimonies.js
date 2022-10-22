@@ -49,7 +49,7 @@ const GaTestimony = () => {
 const Anon1 = () => {
     return (
         <>
-            Security in the cyber world is a big problem today. You helped me know key sensitive information and reference to help me. Am a web developer too and expanding my knowledge to cloud computing. Cyber security training was a boost and additional tool to my collections. Thank you.
+            Security in the cyber world is a big problem today. You helped me know key sensitive information and reference to help me. Am a web developer too and expanding my knowledge to cloud computing. Cybersecurity training was a boost and additional tool to my collections. Thank you.
         </>
     );
 }

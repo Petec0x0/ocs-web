@@ -14,11 +14,11 @@ const AboutHeroSection = () => {
                 <p className="mb-10 text-gray-800">
                     Oriental CyberSecurity Training and Initiative Programme
                     is a program established and organized by a team of
-                    Nigerian Cyber Security experts based in Nigeria, Canada
+                    Nigerian Cybersecurity experts based in Nigeria, Canada
                     and Europe to deliver a first-hand training and
-                    mentorship programme on Information/Cyber security to
+                    mentorship programme on Information/Cybersecurity to
                     all interested Nigerians who are ready to make a career
-                    in Cyber Security.
+                    in Cybersecurity.
                 </p>
                 <p className="mb-10 text-gray-800">
                     The core benefit is for the participants to acquire

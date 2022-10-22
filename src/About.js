@@ -41,6 +41,9 @@ const About = () => {
 							<li className="mb-4 text-gray-600">
 								Two badges of honour earned from a reputable Information Technology Company with Cybersecurity focus.
 							</li>
+							<li className="mb-4 text-gray-600">
+								A certification from the world's largest association of certified cybersecurity professionals (ISC)²
+							</li>
 						</ul>
 					</div>
 				</section>
@@ -62,7 +65,7 @@ const About = () => {
 						of The Programme
 					</h1>
 					<p className="my-6 text-gray-600 text-justify">
-						The programme will hold for a period of 12 weeks starting from 11 June 2022, with lectures holding every Saturday from 12noon to 2pm.
+						The programme will hold for a period of 12 weeks starting from 5 November 2022, with lectures holding every Saturday from 12noon to 2pm.
 					</p>
 				</section>
 
@@ -71,7 +74,8 @@ const About = () => {
 						Cost
 					</h1>
 					<p className="my-6 text-gray-600 text-justify">
-						Our fee for this highly regarded and well packaged programme  is ₦14,500 per participant. Eventhough the maiden edition of the programme was delivered free of charge to all participants, the need to offset some of the high operating costs of hosting the course informs this token charge.  Otherwise, the training still represents an attempt by the sponsors and organizers to give back to the society.
+						Our fee for this highly regarded and well packaged programme  is ₦14,500 per participant.
+						{/* Eventhough the maiden edition of the programme was delivered free of charge to all participants, the need to offset some of the high operating costs of hosting the course informs this token charge.  Otherwise, the training still represents an attempt by the sponsors and organizers to give back to the society. */}
 					</p>
 				</section>
 			</div>
