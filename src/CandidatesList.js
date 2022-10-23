@@ -109,7 +109,14 @@ const CandidatesList = () => {
                                 <tr className="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                     <th className="px-4 py-3">Name</th>
                                     <th className="px-4 py-3">Email</th>
-                                    <th className="px-4 py-3">Meeting Choice</th>
+                                    <th className="px-4 py-3">Phone</th>
+                                    <th className="px-4 py-3">Education Level</th>
+                                    <th className="px-4 py-3">Higher Degree Level</th>
+                                    <th className="px-4 py-3">Institution</th>
+                                    <th className="px-4 py-3">Course of Study</th>
+                                    <th className="px-4 py-3">Country</th>
+                                    <th className="px-4 py-3">State</th>
+                                    <th className="px-4 py-3">Attendance Choice</th>
                                     <th className="px-4 py-3">Date</th>
                                 </tr>
                             </thead>
@@ -137,6 +144,13 @@ const CandidatesList = () => {
                                                             </div>
                                                         </td>
                                                         <td className="px-4 py-3 text-ms font-semibold border">{candidate.email}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.phone}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.levelOfEducation}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.higherDegreeType}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.institution}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.courseOfStudy}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.country}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.stateOfResidence}</td>
                                                         <td className="px-4 py-3 text-sm border">{candidate.locationType}</td>
                                                         <td className="px-4 py-3 text-sm border">
                                                             {new Intl.DateTimeFormat("en-GB", {

@@ -135,6 +135,19 @@ const RegisterSection = () => {
          }
       }
 
+      // make sure candidate selects state of residence if country is nigeria.
+      if(formInputData.country === "Nigeria"){
+         if(!formInputData.stateOfResidence){
+            Swal.fire({
+               title: 'Error!',
+               text: 'Please select state of residence.',
+               icon: 'error',
+               confirmButtonText: 'Ok'
+            })
+            return false;
+         }
+      }
+
       // send form data as post request to the server
       (async () => {
          const rawResponse = await fetch('/api/candidate', {
@@ -287,11 +300,11 @@ const RegisterSection = () => {
                      </select>
                   </div>
                   <div className="mb-6">
-                     <label className="font-semibold text-gray-600 py-2">Level of education<abbr title="required" className="text-red-500">*</abbr></label>
+                     <label className="font-semibold text-gray-600 py-2">Highest level of education<abbr title="required" className="text-red-500">*</abbr></label>
                      <select
                         onChange={handleFormInput}
                         value={formInputData['levelOfEducation']}
-                        title="Select your level of education"
+                        title="Select your highest level of education"
                         type="text"
                         name="levelOfEducation"
                         className="
@@ -306,7 +319,7 @@ const RegisterSection = () => {
                         focus:border-primary
                         "
                      >
-                        <option disabled value="">Level of education</option>
+                        <option disabled value="">Highest level of education</option>
                         <option value="Secondary School">Secondary School</option>
                         <option value="Undergraduate">Undergraduate</option>
                         <option value="First Degree">First Degree</option>
@@ -354,7 +367,7 @@ const RegisterSection = () => {
                               title="Specify the your level of education not in the list above"
                               type="text"
                               name="OtherLevelOfEducation"
-                              placeholder="Specify the your level of education"
+                              placeholder="Give details of other education"
                               className="
                                  w-full
                                  rounded-lg
@@ -380,7 +393,7 @@ const RegisterSection = () => {
                               title="Specify the type of higher degree in the list above"
                               type="text"
                               name="OtherhigherDegreeType"
-                              placeholder="Specify higher degree type"
+                              placeholder="Give details of other higher degree type"
                               className="
                                  w-full
                                  rounded-lg
@@ -428,7 +441,7 @@ const RegisterSection = () => {
                         onChange={handleFormInput} value={formInputData['institution']}
                         type="text"
                         name="institution"
-                        placeholder="Institution (optional)"
+                        placeholder="Last School / Institution Attended (optional)"
                         className="
                         w-full
                         rounded-lg
@@ -712,6 +725,7 @@ const RegisterSection = () => {
                      // show state of residence only when country is nigeria
                      (formInputData.country === "Nigeria") ?
                         <div className="mb-6">
+                           <label className="font-semibold text-gray-600 py-2">State of residence<abbr title="required" className="text-red-500">*</abbr></label>
                            <select
                               onChange={handleFormInput} value={formInputData['stateOfResidence']}
                               type="email"
