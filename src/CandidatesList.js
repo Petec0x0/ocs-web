@@ -150,7 +150,7 @@ const CandidatesList = () => {
                                                         <td className="px-4 py-3 text-ms font-semibold border">{candidate.institution}</td>
                                                         <td className="px-4 py-3 text-ms font-semibold border">{candidate.courseOfStudy}</td>
                                                         <td className="px-4 py-3 text-ms font-semibold border">{candidate.country}</td>
-                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.stateOfResidence}</td>
+                                                        <td className="px-4 py-3 text-ms font-semibold border">{candidate.stateOfResident}</td>
                                                         <td className="px-4 py-3 text-sm border">{candidate.locationType}</td>
                                                         <td className="px-4 py-3 text-sm border">
                                                             {new Intl.DateTimeFormat("en-GB", {
