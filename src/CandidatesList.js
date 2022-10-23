@@ -5,6 +5,11 @@ import ProgressBar from 'components/ProgressBar';
 import waitingIllustration from 'images/waiting.svg';
 
 const CandidatesList = () => {
+    useEffect(() => {
+        // restart the backend dyno if it is asleep
+        fetch('/api');
+      },[])
+
     const [isDataReady, setIsDataReady] = useState(false);
     const [candidates, setCandidates] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(false);

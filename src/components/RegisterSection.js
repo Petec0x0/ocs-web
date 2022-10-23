@@ -7,7 +7,8 @@ const RegisterSection = () => {
    const [formInputData, setFormInputData] = useState({
       candidatesName: '', email: '', phone: '', levelOfEducation: '',
       institution: '', courseOfStudy: '', stateOfResidence: '', locationType: [],
-      gender: '', higherDegreeType: '', country: ''
+      gender: '', higherDegreeType: '', country: '', OtherLevelOfEducation: '',
+      OtherhigherDegreeType: ''
    });
    // States htmlFor checking the errors
    const [submitted, setSubmitted] = useState(false);
@@ -20,7 +21,7 @@ const RegisterSection = () => {
    }
 
    const handleSelectLocationType = (e) => {
-      if(e.target.checked && !formInputData.locationType.includes(e.target.value)){
+      if (e.target.checked && !formInputData.locationType.includes(e.target.value)) {
          setFormInputData({
             ...formInputData,
             locationType: [
@@ -30,7 +31,7 @@ const RegisterSection = () => {
          });
       }
 
-      if(!e.target.checked && formInputData.locationType.includes(e.target.value)){
+      if (!e.target.checked && formInputData.locationType.includes(e.target.value)) {
          const newLocations = formInputData.locationType.filter((location) => location !== e.target.value);
 
          setFormInputData({
@@ -44,7 +45,7 @@ const RegisterSection = () => {
       e.preventDefault();
       // start the progress bar
       setSubmitted(true);
-       
+
       // make sure compulsory inputs are not empty
       if (formInputData.candidatesName === '' ||
          formInputData.email === '' || formInputData.phone === '' ||
@@ -94,7 +95,45 @@ const RegisterSection = () => {
             confirmButtonText: 'Ok'
          })
          return false;
-      }     
+      }
+
+      // make sure a level of education is specified if none is selected 
+      // from the list
+      if(formInputData.levelOfEducation === 'Others'){
+         if(formInputData.OtherLevelOfEducation){
+            setFormInputData({
+               ...formInputData,
+               levelOfEducation: formInputData.OtherLevelOfEducation
+            });
+         }else{
+            Swal.fire({
+               title: 'Error!',
+               text: 'Please specify your level of education',
+               icon: 'error',
+               confirmButtonText: 'Ok'
+            })
+            return false;
+         }
+      }
+
+      // make sure a higher degree type is specified if none is selected 
+      // from the list
+      if(formInputData.higherDegreeType === 'Others'){
+         if(formInputData.OtherhigherDegreeType){
+            setFormInputData({
+               ...formInputData,
+               higherDegreeType: formInputData.OtherhigherDegreeType
+            });
+         }else{
+            Swal.fire({
+               title: 'Error!',
+               text: 'Please specify your higher degree type',
+               icon: 'error',
+               confirmButtonText: 'Ok'
+            })
+            return false;
+         }
+      }
 
       // send form data as post request to the server
       (async () => {
@@ -245,7 +284,6 @@ const RegisterSection = () => {
                         <option disabled value="">Select gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                        <option value="Others">Others</option>
                      </select>
                   </div>
                   <div className="mb-6">
@@ -306,6 +344,58 @@ const RegisterSection = () => {
                         </div> : ''
                   }
 
+{
+                     // Let candidate specify a level of education not on the list
+                     // when "Others" is specified.
+                     (formInputData.levelOfEducation === "Others") ?
+                        <div className="mb-6 md:mt-6">
+                           <input
+                              onChange={handleFormInput}
+                              title="Specify the your level of education not in the list above"
+                              type="text"
+                              name="OtherLevelOfEducation"
+                              placeholder="Specify the your level of education"
+                              className="
+                                 w-full
+                                 rounded-lg
+                                 py-3
+                                 px-[14px]
+                                 text-body-color text-base
+                                 border border-[f0f0f0]
+                                 outline-none
+                                 focus-visible:shadow-none
+                                 focus:border-primary
+                                 "
+                           />
+                        </div> : ''
+                  }
+
+                  {
+                     // Let candidate specify a level of education not on the list
+                     // when "Others" is specified.
+                     (formInputData.higherDegreeType === "Others") ?
+                        <div className="mb-6 md:mt-6">
+                           <input
+                              onChange={handleFormInput}
+                              title="Specify the type of higher degree in the list above"
+                              type="text"
+                              name="OtherhigherDegreeType"
+                              placeholder="Specify higher degree type"
+                              className="
+                                 w-full
+                                 rounded-lg
+                                 py-3
+                                 px-[14px]
+                                 text-body-color text-base
+                                 border border-[f0f0f0]
+                                 outline-none
+                                 focus-visible:shadow-none
+                                 focus:border-primary
+                                 "
+                           />
+                        </div> : ''
+                  }
+
                   {
                      // show only when level of education not secondary school
                      !(formInputData.levelOfEducation === "" ||
@@ -314,6 +404,7 @@ const RegisterSection = () => {
                            <label className="font-semibold text-gray-600 py-2">Course of study<abbr title="required" className="text-red-500">*</abbr></label>
                            <input
                               onChange={handleFormInput} value={formInputData['courseOfStudy']}
+                              title="Enter your course of study"
                               type="text"
                               name="courseOfStudy"
                               placeholder="Course of study"
