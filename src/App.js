@@ -28,7 +28,7 @@ function App() {
           <p className="my-6 text-gray-600 text-justify md:mx-14">
             Information Security/Cybersecurity is one of the fastest growing
             and high paying professions in the world today,
-            with a job growth rate projected at 32% between now and 2028 according to the U.S.
+            and a job growth rate projected at 32% between now and 2028 according to the U.S.
             Bureau of Labour Statistics. Annual median salary is $103,590 as at May 2020 for
             entry level jobs of first degree with less than 5 years’ experience.
             Digital Guardian further reports a 0% unemployment rate in the field
@@ -38,7 +38,7 @@ function App() {
           <p className="my-6 text-gray-600 text-justify md:mx-14">
             The increasing trend by organizations in migration to cloud-based infrastructure 
             as orchestrated by the COVID-19 pandemic, and the dependence of companies, organizations, 
-            ndividuals and countries on automated and computerized systems have equally attracted the 
+            individuals and countries on automated and computerized systems have equally attracted the 
             attention of cybercriminals who are bent on infiltrating and attacking such systems for political reasons, 
             financial benefits, and other ulterior motives, 
             thence driving the need for trained Cybersecurity professionals who can counter such attacks.

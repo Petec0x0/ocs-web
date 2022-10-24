@@ -12,7 +12,7 @@ const HeroSection = () => {
 				</h3>
 				<p className="mb-10 text-gray-600">
 					Find out all you need to know about Cybersecurity. Get live
-					one on one training by our industry experts and get your
+					one-on-one training from our industry experts and get your
 					dream job!
 				</p>
 				<a className="mb-6" href="/#register">

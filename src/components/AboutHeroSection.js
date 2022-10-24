@@ -12,18 +12,15 @@ const AboutHeroSection = () => {
                     About <span className="text-primary">Us</span>
                 </h1>
                 <p className="mb-10 text-gray-800">
-                    Oriental CyberSecurity Training and Initiative Programme
-                    is a program established and organized by a team of
-                    Nigerian Cybersecurity experts based in Nigeria, Canada
-                    and Europe to deliver a first-hand training and
-                    mentorship programme on Information/Cybersecurity to
-                    all interested Nigerians who are ready to make a career
-                    in Cybersecurity.
+                    Oriental CyberSecurity Training and Mentorship is a programme
+                    established by a team of Nigerian Cybersecurity experts based in Nigeria,
+                    Canada and Europe to deliver first-class training and mentorship
+                    on Information/Cybersecurity to interested Nigerians ready to make a career in Cybersecurity.
                 </p>
                 <p className="mb-10 text-gray-800">
-                    The core benefit is for the participants to acquire
-                    skills and to build professional networks that would
-                    enable them to grow and build a career in the field.
+                    The core benefit is for the participants to acquire skills, 
+                    competencies and to build professional networks that would enable 
+                    them to grow and build a career in the field.
                 </p>
             </div>
             <div className="md:w-1/2">

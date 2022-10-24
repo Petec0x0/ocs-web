@@ -7,7 +7,7 @@ const RegisterSection = () => {
    const [formInputData, setFormInputData] = useState({
       candidatesName: '', email: '', phone: '', levelOfEducation: '',
       institution: '', courseOfStudy: '', stateOfResidence: '', locationType: [],
-      gender: '', higherDegreeType: '', country: '', OtherLevelOfEducation: '',
+      gender: '', higherDegreeType: '', country: '', otherLevelOfEducation: '',
       OtherhigherDegreeType: ''
    });
    // States htmlFor checking the errors
@@ -43,8 +43,6 @@ const RegisterSection = () => {
    // Handling the form submission
    const handleSubmit = (e) => {
       e.preventDefault();
-      // start the progress bar
-      setSubmitted(true);
 
       // make sure compulsory inputs are not empty
       if (formInputData.candidatesName === '' ||
@@ -58,7 +56,7 @@ const RegisterSection = () => {
             text: 'Please fill all the required fields',
             icon: 'error',
             confirmButtonText: 'Ok'
-         })
+         });
          return false;
       }
       // validate email address
@@ -69,7 +67,7 @@ const RegisterSection = () => {
             text: 'Invalid email address',
             icon: 'error',
             confirmButtonText: 'Ok'
-         })
+         });
          return false;
       }
 
@@ -81,7 +79,7 @@ const RegisterSection = () => {
             text: 'Select a preferred method of attendance',
             icon: 'error',
             confirmButtonText: 'Ok'
-         })
+         });
          return false;
       }
 
@@ -93,32 +91,32 @@ const RegisterSection = () => {
             text: 'You cannot select two physical locations at a time',
             icon: 'error',
             confirmButtonText: 'Ok'
-         })
+         });
          return false;
       }
 
       // make sure a level of education is specified if none is selected 
       // from the list
-      if(formInputData.levelOfEducation === 'Others'){
-         if(formInputData.OtherLevelOfEducation){
+      if(formInputData.levelOfEducation === 'Other'){
+         if(formInputData.otherLevelOfEducation){
             setFormInputData({
                ...formInputData,
-               levelOfEducation: formInputData.OtherLevelOfEducation
+               levelOfEducation: formInputData.otherLevelOfEducation
             });
          }else{
             Swal.fire({
                title: 'Error!',
-               text: 'Please specify your level of education',
+               text: 'Please give details of your highest education level',
                icon: 'error',
                confirmButtonText: 'Ok'
-            })
+            });
             return false;
          }
       }
 
       // make sure a higher degree type is specified if none is selected 
       // from the list
-      if(formInputData.higherDegreeType === 'Others'){
+      if(formInputData.higherDegreeType === 'Other'){
          if(formInputData.OtherhigherDegreeType){
             setFormInputData({
                ...formInputData,
@@ -127,10 +125,10 @@ const RegisterSection = () => {
          }else{
             Swal.fire({
                title: 'Error!',
-               text: 'Please specify your higher degree type',
+               text: 'Please give details of your higher degree type',
                icon: 'error',
                confirmButtonText: 'Ok'
-            })
+            });
             return false;
          }
       }
@@ -143,11 +141,13 @@ const RegisterSection = () => {
                text: 'Please select state of residence.',
                icon: 'error',
                confirmButtonText: 'Ok'
-            })
+            });
             return false;
          }
       }
 
+      // start the progress bar
+      setSubmitted(true);
       // send form data as post request to the server
       (async () => {
          const rawResponse = await fetch('/api/candidate', {
@@ -156,7 +156,11 @@ const RegisterSection = () => {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formInputData)
+            body: JSON.stringify({
+               ...formInputData,
+               levelOfEducation: (formInputData.levelOfEducation === "Other") ?
+                  formInputData.otherLevelOfEducation : formInputData.levelOfEducation
+            })
          });
          const content = await rawResponse.json();
          // stop the progress bar
@@ -205,7 +209,7 @@ const RegisterSection = () => {
                </h1>
                <p className="text-gray-800 pb-6 md:pr-4">
                   Complete this quick process of entering your details and
-                  wait htmlFor our callback. We will give you personalized
+                  wait for our callback. We will give you personalized
                   advice, answer all your queries and bring you a step
                   closer to becoming a Cybersecurity expert.
                </p>
@@ -258,10 +262,10 @@ const RegisterSection = () => {
                      <label className="font-semibold text-gray-600 py-2">Phone<abbr title="required" className="text-red-500">*</abbr></label>
                      <input
                         onChange={handleFormInput} value={formInputData['phone']}
-                        title="Enter your phone number"
+                        title="Enter your phone number (WhatsApp)"
                         type="text"
                         name="phone"
-                        placeholder="Phone No."
+                        placeholder="Phone No. (WhatsApp)"
                         className="
                         w-full
                         rounded-lg
@@ -324,7 +328,7 @@ const RegisterSection = () => {
                         <option value="Undergraduate">Undergraduate</option>
                         <option value="First Degree">First Degree</option>
                         <option value="Higher Degree">Higher Degree</option>
-                        <option value="Others">Others</option>
+                        <option value="Other">Other</option>
                      </select>
                   </div>
                   {
@@ -352,21 +356,21 @@ const RegisterSection = () => {
                               <option disabled value="">Select higher degree type</option>
                               <option value="Masters">Masters</option>
                               <option value="Doctorate">Doctorate</option>
-                              <option value="Others">Others</option>
+                              <option value="Other">Other</option>
                            </select>
                         </div> : ''
                   }
 
 {
                      // Let candidate specify a level of education not on the list
-                     // when "Others" is specified.
-                     (formInputData.levelOfEducation === "Others") ?
+                     // when "Other" is specified.
+                     (formInputData.levelOfEducation === "Other") ?
                         <div className="mb-6 md:mt-6">
                            <input
                               onChange={handleFormInput}
                               title="Specify the your level of education not in the list above"
                               type="text"
-                              name="OtherLevelOfEducation"
+                              name="otherLevelOfEducation"
                               placeholder="Give details of other education"
                               className="
                                  w-full
@@ -385,8 +389,8 @@ const RegisterSection = () => {
 
                   {
                      // Let candidate specify a level of education not on the list
-                     // when "Others" is specified.
-                     (formInputData.higherDegreeType === "Others") ?
+                     // when "Other" is specified.
+                     (formInputData.higherDegreeType === "Other") ?
                         <div className="mb-6 md:mt-6">
                            <input
                               onChange={handleFormInput}
@@ -809,7 +813,7 @@ const RegisterSection = () => {
                      <button
                         onClick={handleSubmit}
                         className="rounded-full uppercase bg-black text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
-                        Register
+                        Proceed with Payment
                      </button>
                   </div>
                </form>
