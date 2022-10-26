@@ -10,7 +10,6 @@ const WhoCanJoinSection = () => {
           Who Can <span className="text-primary">Join</span> This Training
         </h1>
         <p className="my-6 text-gray-600 text-justify md:mx-14">
-          Replace the entire content of this section with this:
           Anyone can join this course irrespective of what they are doing currently.
           Our target candidates include Secondary school leavers,
           University graduates / undergraduates, working professionals in any
