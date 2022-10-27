@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2'
+import { usePaystackPayment } from 'react-paystack'
 import ProgressBar from './ProgressBar';
 
 const RegisterSection = () => {
@@ -12,6 +13,8 @@ const RegisterSection = () => {
    });
    // States htmlFor checking the errors
    const [submitted, setSubmitted] = useState(false);
+   const [paymentMethod, setPaymentMethod] = useState("");
+   const [bankTransferReady, setBankTransferReady] = useState(false);
 
    const handleFormInput = (e) => {
       setFormInputData({
@@ -40,6 +43,21 @@ const RegisterSection = () => {
          });
       }
    }
+
+   // Paystack public key
+   const publicKey = "pk_test_0257913d038d584299c2935d44d2007a237e29bb";
+   const paymentConfig = {
+      email: formInputData.email,
+      amount: (14500) * 100,
+      metadata: {
+         name: formInputData.candidatesName,
+         phone: formInputData.phone,
+      },
+      publicKey
+   };
+   // Initailize Paystack
+   const initializePayment = usePaystackPayment(paymentConfig);
+
    // Handling the form submission
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -97,13 +115,13 @@ const RegisterSection = () => {
 
       // make sure a level of education is specified if none is selected 
       // from the list
-      if(formInputData.levelOfEducation === 'Other'){
-         if(formInputData.otherLevelOfEducation){
+      if (formInputData.levelOfEducation === 'Other') {
+         if (formInputData.otherLevelOfEducation) {
             setFormInputData({
                ...formInputData,
                levelOfEducation: formInputData.otherLevelOfEducation
             });
-         }else{
+         } else {
             Swal.fire({
                title: 'Error!',
                text: 'Please give details of your highest education level',
@@ -116,13 +134,13 @@ const RegisterSection = () => {
 
       // make sure a higher degree type is specified if none is selected 
       // from the list
-      if(formInputData.higherDegreeType === 'Other'){
-         if(formInputData.OtherhigherDegreeType){
+      if (formInputData.higherDegreeType === 'Other') {
+         if (formInputData.OtherhigherDegreeType) {
             setFormInputData({
                ...formInputData,
                higherDegreeType: formInputData.OtherhigherDegreeType
             });
-         }else{
+         } else {
             Swal.fire({
                title: 'Error!',
                text: 'Please give details of your higher degree type',
@@ -134,8 +152,8 @@ const RegisterSection = () => {
       }
 
       // make sure candidate selects state of residence if country is nigeria.
-      if(formInputData.country === "Nigeria"){
-         if(!formInputData.stateOfResidence){
+      if (formInputData.country === "Nigeria") {
+         if (!formInputData.stateOfResidence) {
             Swal.fire({
                title: 'Error!',
                text: 'Please select state of residence.',
@@ -146,48 +164,82 @@ const RegisterSection = () => {
          }
       }
 
-      // start the progress bar
-      setSubmitted(true);
-      // send form data as post request to the server
-      (async () => {
-         const rawResponse = await fetch('/api/candidate', {
-            method: 'POST',
-            headers: {
-               'Accept': 'application/json',
-               'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-               ...formInputData,
-               levelOfEducation: (formInputData.levelOfEducation === "Other") ?
-                  formInputData.otherLevelOfEducation : formInputData.levelOfEducation
-            })
-         });
-         const content = await rawResponse.json();
-         // stop the progress bar
-         setSubmitted(false);
-         // check if there is an error in the response
-         if (content.error) {
-            Swal.fire({
-               title: 'Error!',
-               text: content.message,
-               icon: 'error',
-               confirmButtonText: 'Ok'
-            })
-         } else {
-            setFormInputData({
-               ...formInputData,
-               candidatesName: '', email: '', phone: '', levelOfEducation: '',
-               institution: '', courseOfStudy: '', stateOfResidence: '', locationType: '',
-               gender: '', higherDegreeType: '', country: ''
-            })
-            Swal.fire({
-               title: 'Great!',
-               text: 'Registration Successful',
-               icon: 'success',
-               confirmButtonText: 'Cool'
-            })
-         }
-      })();
+      if (!submitted) {
+         // start the progress bar
+         setSubmitted(true);
+         return false;
+      }
+
+      // check if candidate selected a payment method
+      if (!paymentMethod) {
+         alert("Please select a payment method to proceed");
+         return false;
+      }
+
+
+      const storeDataToDB = (reference) => {
+         // send form data as post request to the server
+         (async () => {
+            const rawResponse = await fetch('/api/candidate', {
+               method: 'POST',
+               headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                  ...formInputData,
+                  levelOfEducation: (formInputData.levelOfEducation === "Other") ?
+                     formInputData.otherLevelOfEducation : formInputData.levelOfEducation,
+                  paymentMethod: (reference.paymentMethod) ? reference.paymentMethod : "Card Payment",
+                  paymentStatus: reference.status,
+                  payAmount: 14500
+               })
+            });
+            const content = await rawResponse.json();
+            // stop the progress bar
+            setSubmitted(false);
+            // check if there is an error in the response
+            if (content.error) {
+               Swal.fire({
+                  title: 'Error!',
+                  text: content.message,
+                  icon: 'error',
+                  confirmButtonText: 'Ok'
+               })
+            } else {
+               setFormInputData({
+                  ...formInputData,
+                  candidatesName: '', email: '', phone: '', levelOfEducation: '',
+                  institution: '', courseOfStudy: '', stateOfResidence: '', locationType: '',
+                  gender: '', higherDegreeType: '', country: ''
+               })
+               if (paymentMethod === "Card Payment") {
+                  Swal.fire({
+                     title: 'Great!',
+                     text: 'Registration Successful',
+                     icon: 'success',
+                     confirmButtonText: 'Cool'
+                  })
+               } else {
+                  setBankTransferReady(true);
+               }
+
+            }
+         })();
+      }
+
+      // Initailize Paystack if payment is by card
+      if (paymentMethod === 'Card Payment') {
+         initializePayment(storeDataToDB, () => alert('Payment Cancelled'))
+      } else {
+         // create a new transaction reference if the user is paying with bank transfer
+         const reference = {
+            reference: `TF${(new Date()).getTime().toString()}`,
+            status: 'Pending',
+            paymentMethod: 'Bank Transfer'
+         };
+         storeDataToDB(reference);
+      }
 
    }
 
@@ -212,6 +264,9 @@ const RegisterSection = () => {
                   wait for our callback. We will give you personalized
                   advice, answer all your queries and bring you a step
                   closer to becoming a Cybersecurity expert.
+               </p>
+               <p className="font-bold">
+                  With N14,500, reserve your spot today.
                </p>
             </div>
             <div className="md:w-2/3">
@@ -361,7 +416,7 @@ const RegisterSection = () => {
                         </div> : ''
                   }
 
-{
+                  {
                      // Let candidate specify a level of education not on the list
                      // when "Other" is specified.
                      (formInputData.levelOfEducation === "Other") ?
@@ -819,6 +874,79 @@ const RegisterSection = () => {
                </form>
             </div>
          </section >
+
+         <div data-modal-show="true" aria-hidden="true" className={`${submitted ? 'flex' : 'hidden'} modal bg-overlay flex flex-col justify-start items-center fixed z-50 h-full w-full inset-0 visible opacity-100 transition-all-300 overflow-auto`}>
+            <div className="flex justify-center my-10 w-full">
+               <div className="scale-100 w-[400px] min-w-[250px] bg-gray-200 rounded-lg px-3 pb-3 pt-7 mx-3 md:m-5 relative">
+                  <div className="flex flex-col gap-5">
+                     <h1 className="text-green-600 text-sm font-bold tracking-normal leading-tight">Choose your payment method to proceed with payment</h1>
+                     <small className="text-gray-500">Total: </small>
+                     <span className="text-4xl text-center font-medium tracking-tight text-gray-500">₦14,500</span>
+                     <div className="flex space-x-5 justify-center">
+                        <a href="#paystack">
+                           <button onClick={() => setPaymentMethod("Card Payment")} className="apple bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-2 border-2 hover:border-primary focus:border-primary">
+                              <div className="logo">
+                                 <ul className="flex">
+                                    <li className="mx-2">
+                                       <img className="w-20" src="https://tukuz.com/wp-content/uploads/2020/10/paystack-logo-vector.png" alt="" />
+                                    </li>
+                                 </ul>
+                              </div>
+                           </button>
+                        </a>
+                        <a target="_blank" rel="noopener noreferrer" href="#bank-transfer" download>
+                           <button onClick={() => setPaymentMethod("Bank Transfer")} className="google bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-2 border-2 hover:border-primary focus:border-primary">
+                              <div className="text">
+                                 <p className="text-xs font-semibold text-gray-900 p-3">Bank Transfer</p>
+                              </div>
+                           </button>
+                        </a>
+                     </div>
+                     <button
+                        onClick={handleSubmit}
+                        className="submit-button px-4 py-3 rounded-full bg-blue-300 text-teal-900 focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
+                        Pay now
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+         {
+            submitted &&
+            <div modal-backdrop="" className="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"></div>
+         }
+
+
+         <div data-modal-show="true" aria-hidden="true" className={`${bankTransferReady ? 'flex' : 'hidden'} modal bg-overlay flex flex-col justify-start items-center fixed z-50 h-full w-full inset-0 visible opacity-100 transition-all-300 overflow-auto`}>
+            <div className="flex justify-center my-10 w-full">
+               <div className="scale-100 w-[600px] min-w-[250px] bg-gray-200 rounded-lg px-3 pb-3 pt-7 mx-3 md:m-5 relative">
+                  <div className="flex flex-col gap-5">
+                     <h1 className="text-green-700 text-lg text-center font-bold tracking-normal leading-tight">
+                        Local Bank Transfer (Fee: ₦14,500)
+                     </h1>
+                     <div className="grow ml-6">
+                        <p className="font-bold mb-1">Bank Name</p>
+                        <p className="text-gray-500"> Zenith bank</p>
+                     </div>
+                     <div className="grow ml-6">
+                        <p className="font-bold mb-1">Accout Name</p>
+                        <p className="text-gray-500">Foretrust Digital Consulting</p>
+                     </div>
+                     <div className="grow ml-6">
+                        <p className="font-bold mb-1">Account Number</p>
+                        <p className="text-gray-500">1234567890</p>
+                     </div>
+                     <p className="ml-6">Payment receipts with your email as description should be sent to <span className="text-blue-500">info@foretrustgroup.com</span></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         {
+            bankTransferReady &&
+            <div modal-backdrop="" className="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"></div>
+         }
       </div >
    );
 };
