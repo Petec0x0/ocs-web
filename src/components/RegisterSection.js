@@ -931,11 +931,11 @@ const RegisterSection = () => {
                      </div>
                      <div className="grow ml-6">
                         <p className="font-bold mb-1">Accout Name</p>
-                        <p className="text-gray-500">Foretrust Digital Consulting</p>
+                        <p className="text-gray-500">Foretrust Digital Consulting Ltd</p>
                      </div>
                      <div className="grow ml-6">
                         <p className="font-bold mb-1">Account Number</p>
-                        <p className="text-gray-500">1234567890</p>
+                        <p className="text-gray-500">1014784795</p>
                      </div>
                      <p className="ml-6">Payment receipts with your email as description should be sent to <span className="text-blue-500">info@foretrustgroup.com</span></p>
                   </div>
