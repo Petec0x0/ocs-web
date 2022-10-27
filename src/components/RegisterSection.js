@@ -45,7 +45,7 @@ const RegisterSection = () => {
    }
 
    // Paystack public key
-   const publicKey = "pk_test_0257913d038d584299c2935d44d2007a237e29bb";
+   const publicKey = "pk_test_b287d9de421e6df7f5427a7cb3e7de424d50d31c";
    const paymentConfig = {
       email: formInputData.email,
       amount: (14500) * 100,
