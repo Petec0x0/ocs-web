@@ -8,8 +8,8 @@ const NavBar = () => {
       <header className="flex justify-between py-10">
         <div className="">
           <a href="/#">
-            <h1 className="text-lg font-extrabold uppercase md:text-xl">
-              Oriental Cybersecurity
+            <h1 className="text-sm font-extrabold uppercase lg:text-lg">
+              ORIENTAL CYBERSECURITY TRAINING PROGRAMME 2022
             </h1>
           </a>
         </div>

@@ -167,11 +167,6 @@ const Mentors = () => {
 								</button>
 							</p>
 						)}
-						<a href="https://www.linkedin.com/in/gibson-mba-b235169b/" rel="noopener noreferrer" target="_blank">
-							<button className="rounded-full uppercase bg-primary text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
-								View Linkedin
-							</button>
-						</a>
 					</div>
 				</div>
 			</section>
