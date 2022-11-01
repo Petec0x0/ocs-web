@@ -17,15 +17,16 @@ const RegisterSection = () => {
    const [bankTransferReady, setBankTransferReady] = useState(false);
 
    const handleFormInput = (e) => {
-      setFormInputData({
-         ...formInputData,
-         [e.target.name]: e.target.value
-      });
-
       if (e.target.name === "levelOfEducation" && e.target.value === "Secondary School") {
          setFormInputData({
             ...formInputData,
-            courseOfStudy: " "
+            [e.target.name]: e.target.value,
+            courseOfStudy: "Null"
+         });
+      }else{
+         setFormInputData({
+            ...formInputData,
+            [e.target.name]: e.target.value
          });
       }
    }
