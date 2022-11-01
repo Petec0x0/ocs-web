@@ -20,7 +20,14 @@ const RegisterSection = () => {
       setFormInputData({
          ...formInputData,
          [e.target.name]: e.target.value
-      })
+      });
+
+      if (e.target.name === "levelOfEducation" && e.target.value === "Secondary School") {
+         setFormInputData({
+            ...formInputData,
+            courseOfStudy: " "
+         });
+      }
    }
 
    const handleSelectLocationType = (e) => {
@@ -911,7 +918,7 @@ const RegisterSection = () => {
                </div>
             </div>
          </div>
-         
+
          {
             submitted &&
             <div modal-backdrop="" className="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"></div>
