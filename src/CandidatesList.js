@@ -8,7 +8,7 @@ const CandidatesList = () => {
     useEffect(() => {
         // restart the backend dyno if it is asleep
         fetch('/api');
-      },[])
+    }, [])
 
     const [isDataReady, setIsDataReady] = useState(false);
     const [candidates, setCandidates] = useState([]);
@@ -52,7 +52,7 @@ const CandidatesList = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    email: formInputData.email, 
+                    email: formInputData.email,
                     password: formInputData.password
                 })
             });
@@ -117,6 +117,9 @@ const CandidatesList = () => {
                                     <th className="px-4 py-3">Country</th>
                                     <th className="px-4 py-3">State</th>
                                     <th className="px-4 py-3">Attendance Choice</th>
+                                    <th className="px-4 py-3">Payment Status</th>
+                                    <th className="px-4 py-3">Payment Method</th>
+                                    <th className="px-4 py-3">Pay Amount</th>
                                     <th className="px-4 py-3">Date</th>
                                 </tr>
                             </thead>
@@ -152,6 +155,12 @@ const CandidatesList = () => {
                                                         <td className="px-4 py-3 text-ms font-semibold border">{candidate.country}</td>
                                                         <td className="px-4 py-3 text-ms font-semibold border">{candidate.stateOfResident}</td>
                                                         <td className="px-4 py-3 text-sm border">{candidate.locationType}</td>
+                                                        <td
+                                                            className={`px-4 py-3 text-white text-sm border ${(candidate.paymentStatus === "success") ? 'bg-green-500' : 'bg-yellow-300'}`}>
+                                                            {candidate.paymentStatus}
+                                                        </td>
+                                                        <td className="px-4 py-3 text-sm border">{candidate.paymentMethod}</td>
+                                                        <td className="px-4 py-3 text-sm border">₦{candidate.payAmount}</td>
                                                         <td className="px-4 py-3 text-sm border">
                                                             {new Intl.DateTimeFormat("en-GB", {
                                                                 year: "numeric",

@@ -274,7 +274,7 @@ const RegisterSection = () => {
                   closer to becoming a Cybersecurity expert.
                </p>
                <p className="font-bold">
-                  With N14,500, reserve your spot today.
+                  With ₦14,500, reserve your spot today.
                </p>
             </div>
             <div className="md:w-2/3">
