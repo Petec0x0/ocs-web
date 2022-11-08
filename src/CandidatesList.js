@@ -120,6 +120,7 @@ const CandidatesList = () => {
                                     <th className="px-4 py-3">Payment Status</th>
                                     <th className="px-4 py-3">Payment Method</th>
                                     <th className="px-4 py-3">Pay Amount</th>
+                                    <th className="px-4 py-3">Payment Receipt</th>
                                     <th className="px-4 py-3">Date</th>
                                 </tr>
                             </thead>
@@ -161,6 +162,13 @@ const CandidatesList = () => {
                                                         </td>
                                                         <td className="px-4 py-3 text-sm border">{candidate.paymentMethod}</td>
                                                         <td className="px-4 py-3 text-sm border">₦{candidate.payAmount}</td>
+                                                        <td className="px-4 py-3 text-sm border">
+                                                            {
+                                                                candidate.receipt ? 
+                                                                <a className="text-blue-500" href={candidate.receipt.url}>View</a>
+                                                                : ''
+                                                            }
+                                                        </td>
                                                         <td className="px-4 py-3 text-sm border">
                                                             {new Intl.DateTimeFormat("en-GB", {
                                                                 year: "numeric",
