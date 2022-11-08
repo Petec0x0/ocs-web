@@ -7,7 +7,7 @@ import waitingIllustration from 'images/waiting.svg';
 const CandidatesList = () => {
     useEffect(() => {
         // restart the backend dyno if it is asleep
-        fetch('/api');
+        fetch('/api/startup');
     }, [])
 
     const [isDataReady, setIsDataReady] = useState(false);

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import emeka_nwigwe from "images/emeka-nwigwe.jpg";
-import gibson_mba from "images/avatar_profile.png";
+import profile_avatar from "images/avatar_profile.png";
 
 const Mentors = () => {
 	const [isFullTextEN, setIsFullTextEN] = useState(false);
 	const [isFullTextGM, setIsFullTextGM] = useState(false);
 	const [isFullTextUA, setIsFullTextUA] = useState(false);
+	const [isFullTextON, setIsFullTextON] = useState(false);
 
 	return (
 		<div className="bg-[#f7f7f7] pb-6 md:px-24 xl:px-40">
@@ -96,7 +97,7 @@ const Mentors = () => {
 						<img
 							className="self-center mx-auto rounded-full border-x-8 w-1/2 border-primary"
 							alt="mentor1"
-							src={gibson_mba}
+							src={profile_avatar}
 						/>
 					</div>
 					<div className="text-center md:w-1/2 md:text-left md:pl-16">
@@ -176,12 +177,12 @@ const Mentors = () => {
 						<img
 							className="self-center mx-auto rounded-full border-x-8 w-1/2 border-primary"
 							alt="mentor1"
-							src={gibson_mba}
+							src={profile_avatar}
 						/>
 					</div>
 					<div className="text-center md:w-1/2 md:text-left">
 						<h1 className="font-bold text-2xl text-center py-4 md:text-left">
-							Uchenna Ajoku (IT Consultant)
+							Uchenna Ajoku  <small className="text-gray-500 text-sm"> - Senior Consultant</small>
 						</h1>
 						{/* <h4 className="text-blue-600 font-bold">
 							B.Sc., M.Sc., CISSP, CISA, CRISC, CDPSE, COBIT
@@ -271,6 +272,131 @@ const Mentors = () => {
 								View Linkedin
 							</button>
 						</a> */}
+					</div>
+				</div>
+
+				<div className="flex flex-col m-6 px-6 py-10 bg-white drop-shadow-xl rounded-lg md:flex-row-reverse">
+					<div className="flex md:w-1/2">
+						<img
+							className="self-center mx-auto rounded-full border-x-8 w-1/2 border-primary"
+							alt="mentor1"
+							src={profile_avatar}
+						/>
+					</div>
+					<div className="text-center md:w-1/2 md:text-left md:pl-16">
+						<h1 className="font-bold text-2xl text-center py-4 md:text-left">
+							Obi Nwosu <small className="text-gray-500 text-sm"> - Technical Assistant</small>
+						</h1>
+						<h4 className="text-red-600 font-bold">
+							B.Eng, PCAP
+						</h4>
+						{isFullTextON ? (
+							<>
+								<p className="my-8 text-gray-600 text-left">
+									Obi is a software developer.
+									He has worked as an electrical engineer and has a few
+									years of experience teaching people about computers,
+									how to make software and the importance of being cybersecurity conscious.
+									He was a pioneer student of the Oriental Cybersecurity Training
+									Programme and completed the training in flying colours.
+								</p>
+								<button
+									onClick={() =>
+										setIsFullTextON(!isFullTextON)
+									}
+									className="text-primary hover:text-sm"
+								>
+									View Less
+								</button>
+							</>
+						) : (
+							<p className="my-8 text-gray-600">
+								Obi is a software developer.
+								He has worked as an electrical engineer and has a few
+								years of experience teaching people about computers,
+								how to make software and the importance of being cybersecurity conscious.
+								He was a pioneer student of the Oriental Cybersecurity Training
+								Programme and completed the training in flying colours....
+								<button
+									onClick={() =>
+										setIsFullTextON(!isFullTextON)
+									}
+									className="text-primary hover:text-sm"
+								>
+									View More
+								</button>
+							</p>
+						)}
+					</div>
+				</div>
+
+				<div className="flex flex-col m-6 px-6 py-10 bg-white drop-shadow-xl rounded-lg md:flex-row">
+					<div className="flex md:w-1/2">
+						<img
+							className="self-center mx-auto rounded-full border-x-8 w-1/2 border-primary"
+							alt="mentor1"
+							src={'https://media-exp1.licdn.com/dms/image/C4D03AQF5Gy1iBZc79A/profile-displayphoto-shrink_200_200/0/1656621253827?e=1673481600&v=beta&t=6B3U2UQzrKfo-6pgoSjGd3TwlQbg6CqoZPnVeH31f48'}
+						/>
+					</div>
+					<div className="text-center md:w-1/2 md:text-left">
+						<h1 className="font-bold text-2xl text-center py-4 md:text-left">
+							Arinze Iroka <small className="text-gray-500 text-sm"> - Technical Assistant</small>
+						</h1>
+						<h4 className="text-blue-600 font-bold">
+							B. Sc., Pub. Admin
+						</h4>
+						{isFullTextEN ? (
+							<>
+								<p className="my-8 text-gray-600">
+									Arinze is an ardent Tech and Cybersecurity lover who has
+									obtained two verifiable badges from Cisco Network Academy.
+									A knowledgeable fellow in the tactics and techniques used by
+									Black Hats and the principles of confidentiality,
+									integrity and availability used by white hats to defend networks.
+								</p>
+								<p className="my-8 text-gray-600">
+									He is a student member of the (ISC)², a diverse global
+									community of cybersecurity professionals working to build a safe and secure cyberspace.
+								</p>
+								<p className="my-8 text-gray-600">
+									Apart from his passion for cybersecurity,
+									Arinze is also a Google and Hubspot certified
+									Digital Marketer and Social Media Manager.
+									A resource person and a digital marketing assistant at
+									Foretrust Digital Consulting Ltd Enugu, Nigeria.
+									<br />
+									<button
+										onClick={() =>
+											setIsFullTextEN(!isFullTextEN)
+										}
+										className="text-primary hover:text-sm"
+									>
+										View Less
+									</button>
+								</p>
+							</>
+						) : (
+							<p className="my-8 text-gray-600">
+								Arinze is an ardent Tech and Cybersecurity lover who has obtained
+								two verifiable badges from Cisco Network Academy.
+								A knowledgeable fellow in the tactics and techniques
+								used by Black Hats and the principles of confidentiality,
+								integrity and availability used by white hats to defend networks....
+								<button
+									onClick={() =>
+										setIsFullTextEN(!isFullTextEN)
+									}
+									className="text-primary hover:text-sm"
+								>
+									View More
+								</button>
+							</p>
+						)}
+						<a rel="noopener noreferrer" href="https://www.linkedin.com/in/arinze-iroka247" target="_blank">
+							<button className="rounded-full uppercase bg-primary text-white px-7 py-3 font-bold text-xs hover:drop-shadow-lg">
+								View Linkedin
+							</button>
+						</a>
 					</div>
 				</div>
 			</section>

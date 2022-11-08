@@ -13,6 +13,7 @@ const RegisterSection = () => {
    });
    // States htmlFor checking the errors
    const [submitted, setSubmitted] = useState(false);
+   const [isEmailInUse, setEmailInUse] = useState(false);
    const [paymentMethod, setPaymentMethod] = useState("");
    const [bankTransferReady, setBankTransferReady] = useState(false);
 
@@ -23,12 +24,78 @@ const RegisterSection = () => {
             [e.target.name]: e.target.value,
             courseOfStudy: "Null"
          });
-      }else{
+      } else {
          setFormInputData({
             ...formInputData,
             [e.target.name]: e.target.value
          });
       }
+   }
+
+   const [uploadedReceiptImg, setUploadedReceiptImg] = useState();
+   const [submittedReceipt, setSubmittedReceipt] = useState(false);
+   const handleReceiptUpload = (e) => {
+      setUploadedReceiptImg(e.target.files[0]);
+   }
+
+   const handleSubmitReceiptUpload = (e) => {
+      e.preventDefault();
+      if (!uploadedReceiptImg) return;
+      setSubmittedReceipt(true);
+      const reader = new FileReader();
+      reader.readAsDataURL(uploadedReceiptImg);
+      reader.onloadend = () => {
+         uploadReceipt(reader.result);
+      };
+      reader.onerror = () => {
+         setSubmittedReceipt(false);
+         Swal.fire({
+            title: 'Error!',
+            text: 'Something went wrong',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+         });
+      };
+   }
+
+   const uploadReceipt = (base64EncodedImage) => {
+      /**
+       * Send post request to the server to confirm 
+       * email address have been used
+       */
+      (async () => {
+         const rawResponse = await fetch('/api/upload-receipt', {
+            method: 'POST',
+            headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+               receipt: base64EncodedImage,
+               email: formInputData.email
+            })
+         });
+         const content = await rawResponse.json();
+         setSubmittedReceipt(false);
+         if (content.error) {
+            Swal.fire({
+               title: 'Error!',
+               text: 'Something went wrong',
+               icon: 'error',
+               confirmButtonText: 'Ok'
+            });
+         } else {
+            Swal.fire({
+               title: 'Success!',
+               text: content.message,
+               icon: 'success',
+               confirmButtonText: 'Ok'
+            });
+            setUploadedReceiptImg(null);
+            setBankTransferReady(!bankTransferReady);
+         }
+
+      })();
    }
 
    const handleSelectLocationType = (e) => {
@@ -75,7 +142,6 @@ const RegisterSection = () => {
          formInputData.email === '' || formInputData.phone === '' ||
          formInputData.levelOfEducation === '' || formInputData.courseOfStudy === '' ||
          formInputData.country === '' || formInputData.gender === '') {
-         console.log(formInputData);
          setSubmitted(false);
          Swal.fire({
             title: 'Error!',
@@ -91,6 +157,18 @@ const RegisterSection = () => {
          Swal.fire({
             title: 'Error!',
             text: 'Invalid email address',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+         });
+         return false;
+      }
+
+      // validate whether email is in use or not
+      if (isEmailInUse) {
+         setSubmitted(false);
+         Swal.fire({
+            title: 'Error!',
+            text: 'Email address already in use by another candidate',
             icon: 'error',
             confirmButtonText: 'Ok'
          });
@@ -217,7 +295,7 @@ const RegisterSection = () => {
             } else {
                setFormInputData({
                   ...formInputData,
-                  candidatesName: '', email: '', phone: '', levelOfEducation: '',
+                  candidatesName: '', phone: '', levelOfEducation: '',
                   institution: '', courseOfStudy: '', stateOfResidence: '', locationType: '',
                   gender: '', higherDegreeType: '', country: ''
                })
@@ -259,6 +337,37 @@ const RegisterSection = () => {
          );
    };
 
+   const checkEmailInUseStatus = (e) => {
+      if (!e.target.value) {
+         // exit
+         return false;
+      }
+      /**
+       * Send post request to the server to confirm 
+       * email address have been used
+       */
+      (async () => {
+         const rawResponse = await fetch('/api/verify-email', {
+            method: 'POST',
+            headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+               email: e.target.value
+            })
+         });
+         const content = await rawResponse.json();
+         if (content.error) {
+            setEmailInUse(true);
+            alert(content.message);
+         } else {
+            setEmailInUse(false);
+         }
+
+      })();
+   }
+
    return (
       <div id="register" className="bg-primary lg:px-24">
          <section className="flex flex-col p-8 md:p-20 md:flex-row">
@@ -273,7 +382,7 @@ const RegisterSection = () => {
                   advice, answer all your queries and bring you a step
                   closer to becoming a Cybersecurity expert.
                </p>
-               <p className="font-bold">
+               <p className="font-bold mb-3">
                   With ₦14,500, reserve your spot today.
                </p>
             </div>
@@ -304,6 +413,7 @@ const RegisterSection = () => {
                      <label className="font-semibold text-gray-600 py-2">Email Address<abbr title="required" className="text-red-500">*</abbr></label>
                      <input
                         onChange={handleFormInput} value={formInputData['email']}
+                        onBlur={checkEmailInUseStatus}
                         title="Enter your email address"
                         type="email"
                         name="email"
@@ -929,6 +1039,11 @@ const RegisterSection = () => {
          <div data-modal-show="true" aria-hidden="true" className={`${bankTransferReady ? 'flex' : 'hidden'} modal bg-overlay flex flex-col justify-start items-center fixed z-50 h-full w-full inset-0 visible opacity-100 transition-all-300 overflow-auto`}>
             <div className="flex justify-center my-10 w-full">
                <div className="scale-100 w-[600px] min-w-[250px] bg-gray-200 rounded-lg px-3 pb-3 pt-7 mx-3 md:m-5 relative">
+                  <button onClick={() => setBankTransferReady(!bankTransferReady)} className="absolute top-0 right-0 sm:text-white sm:bg-primary sm:hover:bg-teal-500 transition-all-300 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg p-2">
+                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                     </svg>
+                  </button>
                   <div className="flex flex-col gap-5">
                      <h1 className="text-green-700 text-lg text-center font-bold tracking-normal leading-tight">
                         Local Bank Transfer (Fee: ₦14,500)
@@ -945,7 +1060,34 @@ const RegisterSection = () => {
                         <p className="font-bold mb-1">Account Number</p>
                         <p className="text-gray-500">1014784795</p>
                      </div>
-                     <p className="ml-6">Payment receipts with your email as description should be sent to <span className="text-blue-500">info@foretrustgroup.com</span></p>
+
+                     <div className="mx-6 rounded-md border border-gray-100 bg-white p-4 shadow-md">
+                        <label htmlFor="upload" className="flex flex-col items-center gap-2 cursor-pointer" style={{ backgroundImage: `url(${uploadedReceiptImg ? URL.createObjectURL(uploadedReceiptImg) : ''})` }}>
+                           <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 fill-white stroke-teal-500" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                           </svg>
+                           <span className="text-gray-600 font-medium">Upload payment receipt</span>
+                        </label>
+                        <input onChange={handleReceiptUpload} id="upload" type="file" className="hidden" />
+                        {
+                           // show the progress bar if data is submited and being processed
+                           (submittedReceipt) ? (
+                              <ProgressBar />
+                           ) : ""
+                        }
+                        <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+                           <button onClick={handleSubmitReceiptUpload} className="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save</button>
+                        </div>
+                     </div>
+
+                     <p className="ml-6 mt-8">Payment receipts with your email as description can also be sent to
+                        <a href="mailto:info@foretrustgroup.com" className="text-blue-500"> info@foretrustgroup.com</a>
+                        <br />
+                        Or WhatsApp <a href="https://api.whatsapp.com/send?phone=2348033034250" className="text-green-500"> +234 803 303 4250</a>
+                     </p>
+                     <button onClick={() => { alert("Registration successful with payment verification pending"); setBankTransferReady(!bankTransferReady) }} className="btn-close-modal btn-effect w-max ml-auto bg-primary text-white uppercase font-bold rounded-lg p-2 px-3" href="/#">
+                        <span className="text-center">Save & Exit</span>
+                     </button>
                   </div>
                </div>
             </div>
