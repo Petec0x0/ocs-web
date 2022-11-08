@@ -1006,7 +1006,8 @@ const RegisterSection = () => {
                               <div className="logo">
                                  <ul className="flex">
                                     <li className="mx-2">
-                                       <img className="w-20" src="https://tukuz.com/wp-content/uploads/2020/10/paystack-logo-vector.png" alt="" />
+                                       <b><small>Debit/Credit card</small></b>
+                                       <img className="w-36" src="https://www.clipartmax.com/png/middle/255-2550378_credit-card-logo-credit-card-icons-png.png" alt="" />
                                     </li>
                                  </ul>
                               </div>
