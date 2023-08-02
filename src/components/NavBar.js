@@ -9,7 +9,7 @@ const NavBar = () => {
         <div className="">
           <a href="/#">
             <h1 className="text-sm font-extrabold uppercase lg:text-lg">
-              ORIENTAL CYBERSECURITY TRAINING PROGRAMME 2022
+              ORIENTAL CYBERSECURITY TRAINING PROGRAMME 
             </h1>
           </a>
         </div>
